@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatStore.Views.CatDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Lägg i varukorg" Clicked="ToolbarAdd_Clicked">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Namn:" FontSize="Medium" />
+            <Label Text="{Binding Cat.Name}" FontSize="Small"/>
+            <Label Text="Id:" FontSize="Medium" />
+            <Label Text="{Binding Cat.Id}" FontSize="Small"/>
+            <Label Text="Pris:" FontSize="Medium" />
+            <Label Text="{Binding Cat.Price}" FontSize="Small"/>
+         </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
