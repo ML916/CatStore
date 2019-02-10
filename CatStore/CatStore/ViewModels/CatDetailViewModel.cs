@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using CatStore.Models;
+using Xamarin.Forms;
+using CatStore.Views;
 
 namespace CatStore.ViewModels
 {
@@ -11,6 +13,11 @@ namespace CatStore.ViewModels
         public CatDetailViewModel(Cat cat) {
             Title = cat.Name;
             Cat = cat;
+
+            MessagingCenter.Subscribe<CatDetailPage, Cat>(this, MessageNames.AddToCart, (obj, item) =>
+            {
+                var newCat = item as Cat;
+            });
         }
     }
 }

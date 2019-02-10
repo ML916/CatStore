@@ -34,7 +34,7 @@ namespace CatStore.Views
 
         private async void ToolbarAdd_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", viewModel.Cat);
+            MessagingCenter.Send(this, MessageNames.AddToCart, viewModel.Cat);
             await DisplayAlert("Tillagd", "Katten finns nu i din varukorg", "Ok");
             await Navigation.PopModalAsync();
         }

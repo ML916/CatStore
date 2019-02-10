@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CatStore.Views.StoreFrontPage">
+             xmlns:local="clr-namespace:CatStore.ViewModels"
+             x:Class="CatStore.Views.StoreFrontPage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local:StoreFrontViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="">
+            <ListView ItemsSource="{Binding StoreFront.AvailableCats}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        
+                        <TextCell TextColor="Black"
+                                  Text="{Binding Name}"
+                                  Detail="{Binding Id}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

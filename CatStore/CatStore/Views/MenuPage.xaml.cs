@@ -19,7 +19,8 @@ namespace CatStore.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.StoreFront, Title="StoreFront" },
-                new HomeMenuItem {Id = MenuItemType.ShoppingCart, Title="Shopping Cart"}
+                new HomeMenuItem {Id = MenuItemType.ShoppingCart, Title="Shopping Cart"},
+                new HomeMenuItem {Id = MenuItemType.About, Title="About"}
             };
 
             ListViewMenu.ItemsSource = menuItems;

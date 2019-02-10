@@ -13,13 +13,19 @@ namespace CatStore.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StoreFrontPage : ContentPage
 	{
-        StoreFrontViewModel viewModel;
+        //StoreFrontViewModel viewModel;
 
 		public StoreFrontPage ()
 		{
-			InitializeComponent ();
-            this.viewModel = new StoreFrontViewModel();
-            BindingContext = this.viewModel;
+            InitializeComponent ();
+            //this.viewModel = new StoreFrontViewModel();
+            //BindingContext = this.viewModel;
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Send(this, MessageNames.LoadCats);
+            base.OnAppearing();
+        }
+    }
 }
