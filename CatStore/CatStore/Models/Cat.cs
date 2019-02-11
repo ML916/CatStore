@@ -33,6 +33,18 @@ namespace CatStore.Models
             }
         }
 
+        public override bool Equals(object obj)
+        {
+            var cat = obj as Cat;
+            return cat != null &&
+                   id == cat.id &&
+                   name == cat.name &&
+                   price == cat.price &&
+                   Id == cat.Id &&
+                   Name == cat.Name &&
+                   Price == cat.Price;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void RaisePropertyChanged(string property)
@@ -42,5 +54,10 @@ namespace CatStore.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
+    }
+
+    class RootObjectCats
+    {
+        public List<Cat> cats { get; set; }
     }
 }

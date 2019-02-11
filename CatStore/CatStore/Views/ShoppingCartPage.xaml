@@ -1,12 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CatStore.Views.ShoppingCartPage">
+             xmlns:viewModels="clr-namespace:CatStore.ViewModels"
+             x:Class="CatStore.Views.ShoppingCartPage"
+             Title="{Binding ShoppingCart.Items.Count, StringFormat='Varukorg ({0})'}">
+    <ContentPage.BindingContext>
+        <viewModels:ShoppingCartViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Din varukorg" 
+                       FontSize="Medium"/>
+                <Button x:Name="finalizeOrderButton" 
+                        Text="Slutför beställning"
+                        Pressed="FinalizeOrderButton_Pressed"/>
+            </StackLayout>
+            <Label Text="{Binding ShoppingCart.Sum, StringFormat='Summa: {0}'}" 
+                   FontSize="Medium"/>
+            <Frame>
+                <ListView 
+                    x:Name="shoppingCartListView"
+                    ItemSelected="ShoppingCartListView_ItemSelected"
+                    ItemsSource="{Binding ShoppingCart.Items}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" 
+                                      Detail="{Binding Price}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

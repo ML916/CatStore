@@ -9,12 +9,9 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Namn:" FontSize="Medium" />
-            <Label Text="{Binding Cat.Name}" FontSize="Small"/>
-            <Label Text="Id:" FontSize="Medium" />
-            <Label Text="{Binding Cat.Id}" FontSize="Small"/>
-            <Label Text="Pris:" FontSize="Medium" />
-            <Label Text="{Binding Cat.Price}" FontSize="Small"/>
+            <Label Text="{Binding Cat.Name, StringFormat='Namn: {0}'}" FontSize="Medium"/>
+            <Label Text="{Binding Cat.Id, StringFormat='Id: {0}'}" FontSize="Medium"/>
+            <Label Text="{Binding Cat.Price, StringFormat='Pris: {0}'}" FontSize="Medium"/>
          </StackLayout>
     </ContentPage.Content>
 </ContentPage>

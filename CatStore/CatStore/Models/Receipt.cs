@@ -4,7 +4,11 @@ using System.Text;
 
 namespace CatStore.Models
 {
-    class Receipt
+    public class Receipt
     {
+        public string status {
+            get; set;
+        }
+        public double sum { get; set; }
     }
 }

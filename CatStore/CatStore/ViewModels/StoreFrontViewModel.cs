@@ -14,10 +14,10 @@ namespace CatStore.ViewModels
         //ObservableCollection<Cat> Cats;
         public StoreFrontViewModel()
         {
-            Title = "Storefront";
+            Title = "Sortiment";
             
             StoreFront = new StoreFront();
-            MessagingCenter.Subscribe<StoreFrontPage>(this, MessageNames.LoadCats, (sender) => {
+            MessagingCenter.Subscribe<StoreFrontPage>(this, MessagesAndUrls.LoadCats, (sender) => {
                 StoreFront.GetCatsFromAPI();
                 //Cats = StoreFront.AvailableCats;
             });  

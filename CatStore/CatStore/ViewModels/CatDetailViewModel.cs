@@ -14,7 +14,7 @@ namespace CatStore.ViewModels
             Title = cat.Name;
             Cat = cat;
 
-            MessagingCenter.Subscribe<CatDetailPage, Cat>(this, MessageNames.AddToCart, (obj, item) =>
+            MessagingCenter.Subscribe<CatDetailPage, Cat>(this, MessagesAndUrls.AddToCart, (obj, item) =>
             {
                 var newCat = item as Cat;
             });

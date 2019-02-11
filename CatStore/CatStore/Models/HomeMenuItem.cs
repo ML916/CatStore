@@ -8,7 +8,8 @@ namespace CatStore.Models
     {
         StoreFront,
         ShoppingCart,
-        About
+        Receipt,
+        OrderStatus
     }
     public class HomeMenuItem
     {

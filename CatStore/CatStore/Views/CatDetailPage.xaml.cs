@@ -25,18 +25,18 @@ namespace CatStore.Views
             BindingContext = this.viewModel;
         }
 
-		public CatDetailPage (CatDetailViewModel viewModel)
+		public CatDetailPage (Cat cat)
 		{
 			InitializeComponent ();
-            this.viewModel = viewModel;
+            this.viewModel = new CatDetailViewModel(cat);
             BindingContext = this.viewModel;
 		}
 
         private async void ToolbarAdd_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, MessageNames.AddToCart, viewModel.Cat);
+            MessagingCenter.Send(this, MessagesAndUrls.AddToCart, viewModel.Cat);
             await DisplayAlert("Tillagd", "Katten finns nu i din varukorg", "Ok");
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
     }
 }

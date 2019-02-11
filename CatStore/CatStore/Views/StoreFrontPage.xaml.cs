@@ -1,4 +1,5 @@
-﻿using CatStore.ViewModels;
+﻿using CatStore.Models;
+using CatStore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +14,25 @@ namespace CatStore.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StoreFrontPage : ContentPage
 	{
-        //StoreFrontViewModel viewModel;
-
 		public StoreFrontPage ()
 		{
             InitializeComponent ();
-            //this.viewModel = new StoreFrontViewModel();
-            //BindingContext = this.viewModel;
 		}
 
         protected override void OnAppearing()
         {
-            MessagingCenter.Send(this, MessageNames.LoadCats);
+            MessagingCenter.Send(this, MessagesAndUrls.LoadCats);
             base.OnAppearing();
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null) {
+                return;
+            }
+
+            await Navigation.PushAsync(new CatDetailPage(e.SelectedItem as Cat));
+            catsListView.SelectedItem = null;
         }
     }
 }

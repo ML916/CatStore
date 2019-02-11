@@ -6,6 +6,7 @@ using System.Net.Http;
 //using System.Net.Http.Formatting;
 using System.Text;
 using Newtonsoft.Json;
+using CatStore;
 
 namespace CatStore.Models
 {
@@ -22,8 +23,8 @@ namespace CatStore.Models
 
         public async void GetCatsFromAPI() {
             HttpClient httpClient = new HttpClient();
-            var httpResponse = await httpClient.GetAsync(catsURL);
-            RootObjectCat rootObjectCat = await httpResponse.Content.ReadAsAsync<RootObjectCat>();
+            var httpResponse = await httpClient.GetAsync(MessagesAndUrls.CatsURL);
+            RootObjectCats rootObjectCat = await httpResponse.Content.ReadAsAsync<RootObjectCats>();
             AvailableCats = new ObservableCollection<Cat>(rootObjectCat.cats);
             RaisePropertyChanged("AvailableCats");
         }

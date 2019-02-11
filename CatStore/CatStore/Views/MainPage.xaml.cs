@@ -32,6 +32,9 @@ namespace CatStore.Views
                     case (int)MenuItemType.ShoppingCart:
                         MenuPages.Add(id, new NavigationPage(new ShoppingCartPage()));
                         break;
+                    case (int)MenuItemType.OrderStatus:
+                        MenuPages.Add(id, new NavigationPage(new OrderStatusPage()));
+                        break;
                 }
             }
 
