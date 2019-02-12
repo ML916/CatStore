@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Net.Http;
+using System.Net;
+using System.Collections.ObjectModel;
 
 namespace CatStore.Models
 {
@@ -15,7 +18,7 @@ namespace CatStore.Models
             set {
                 id = value;
                 RaisePropertyChanged(Id);
-             }
+            }
         }
 
         public string Status {
@@ -36,8 +39,26 @@ namespace CatStore.Models
         }
     }
 
+    public class RootObjectResultOrder{
+        private string orderId;
+        public string OrderId { get => orderId; set => orderId = value; }
+    }
+
     public class RootObjectOrders
     {
-        public List<Order> orders { get; set; }
+        public ObservableCollection<Order> orders { get; set; }
+        
+        public RootObjectOrders()
+        {
+            orders = new ObservableCollection<Order>();
+        }
+
+        public async void GetOrdersFromAPI()
+        {
+            HttpClient httpClient = new HttpClient();
+            var httpResponse = await httpClient.GetAsync(MessagesAndUrls.OrdersURL);
+            var rootObject = await httpResponse.Content.ReadAsAsync<RootObjectOrders>();
+            orders = rootObject.orders;
+        }
     }
 }

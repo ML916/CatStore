@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using CatStore.Models;
 namespace CatStore.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -16,5 +16,16 @@ namespace CatStore.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void OrderListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
+            var order = e.SelectedItem as Order;
+
+            await Navigation.PushAsync(new ReceiptPage(order.Id));
+
+            orderListView.SelectedItem = null;
+        }
+    }
 }

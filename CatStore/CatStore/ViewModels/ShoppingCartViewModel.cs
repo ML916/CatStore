@@ -30,7 +30,16 @@ namespace CatStore.ViewModels
 
             MessagingCenter.Subscribe<ShoppingCartPage>(this, MessagesAndUrls.SendOrder, async (sender) => {
                 var httpResponse = await ShoppingCart.SendOrder();
+                var resultOrder = await httpResponse.Content.ReadAsAsync<RootObjectResultOrder>();
+                
                 var statusCode = httpResponse.StatusCode;
+                if(statusCode == HttpStatusCode.Accepted)
+                {
+                    foreach(var item in ShoppingCart.Items)
+                    {
+                        await ShoppingCart.DeleteItemAsync(item.Id);
+                    }
+                }
                 MessagingCenter.Send(this, MessagesAndUrls.OrderResponseMessage,statusCode);
             });
         }

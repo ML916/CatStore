@@ -11,6 +11,7 @@ namespace CatStore
         public static readonly string DeleteFromShoppingCart = "DeleteFromShoppingCart";
         public static readonly string SendOrder = "SendOrder";
         public static readonly string OrderResponseMessage = "OrderResponse";
+        public static readonly string GetOrdersFromApiMessage = "GetOrders";
 
         public static readonly string ApiURL = "https://sogetiorebrointerview.azurewebsites.net/api/";
         public static readonly string CatsURL = ApiURL + "cats/";

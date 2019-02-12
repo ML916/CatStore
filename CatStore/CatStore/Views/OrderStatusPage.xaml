@@ -8,12 +8,12 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="">
+            <ListView x:Name="orderListView"
+                      ItemSelected="OrderListView_ItemSelected"
+                      ItemsSource="{Binding RootObjectOrders.orders}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding}"/>
-
-
+                        <TextCell Text="{Binding Id}" Detail="{Binding Status}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

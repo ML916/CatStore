@@ -11,6 +11,10 @@ namespace CatStore.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        StoreFrontPage storeFrontPage;
+        ShoppingCartPage shoppingCartPage;
+        OrderStatusPage orderStatusPage;
+
         public MainPage()
         {
             InitializeComponent();
@@ -18,6 +22,10 @@ namespace CatStore.Views
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.StoreFront, (NavigationPage)Detail);
+            storeFrontPage = new StoreFrontPage();
+            shoppingCartPage = new ShoppingCartPage();
+            orderStatusPage = new OrderStatusPage();
+            //MenuPages.Add((int)MenuItemType.ShoppingCart, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -27,13 +35,13 @@ namespace CatStore.Views
                 switch (id)
                 {
                     case (int)MenuItemType.StoreFront:
-                        MenuPages.Add(id, new NavigationPage(new StoreFrontPage()));
+                        MenuPages.Add(id, new NavigationPage(storeFrontPage));
                         break;
                     case (int)MenuItemType.ShoppingCart:
-                        MenuPages.Add(id, new NavigationPage(new ShoppingCartPage()));
+                        MenuPages.Add(id, new NavigationPage(shoppingCartPage));
                         break;
                     case (int)MenuItemType.OrderStatus:
-                        MenuPages.Add(id, new NavigationPage(new OrderStatusPage()));
+                        MenuPages.Add(id, new NavigationPage(orderStatusPage));
                         break;
                 }
             }

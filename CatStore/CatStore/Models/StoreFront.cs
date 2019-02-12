@@ -12,13 +12,10 @@ namespace CatStore.Models
 {
     public class StoreFront : INotifyPropertyChanged
     {
-        private readonly string catsURL = "https://sogetiorebrointerview.azurewebsites.net/api/cats";
-        
         public ObservableCollection<Cat> AvailableCats { get; set; }
 
         public StoreFront() {
             AvailableCats = new ObservableCollection<Cat>();
-            //GetCatsFromAPI();
         }
 
         public async void GetCatsFromAPI() {

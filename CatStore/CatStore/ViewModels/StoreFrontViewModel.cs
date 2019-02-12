@@ -19,7 +19,6 @@ namespace CatStore.ViewModels
             StoreFront = new StoreFront();
             MessagingCenter.Subscribe<StoreFrontPage>(this, MessagesAndUrls.LoadCats, (sender) => {
                 StoreFront.GetCatsFromAPI();
-                //Cats = StoreFront.AvailableCats;
             });  
         }
     }
