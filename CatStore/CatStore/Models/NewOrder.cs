@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CatStore.Models
 {
+    /// <summary>
+    /// Klass motsvarande de objekt som skickas i Post mot /api/orders
+    /// </summary>
     public class NewOrder
     {
         public List<string> catIds { get; set; }

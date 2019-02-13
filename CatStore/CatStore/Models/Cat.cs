@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CatStore.Models
 {
+    /// <summary>
+    /// Klass motsvarande enskilda katt-objekt
+    /// </summary>
     public class Cat : INotifyPropertyChanged
     {
         private string id;
@@ -56,6 +59,9 @@ namespace CatStore.Models
         }
     }
 
+    /// <summary>
+    /// Klass motsvarande objekt som hämtas vid GET-anrop mot api/cats
+    /// </summary>
     class RootObjectCats
     {
         public List<Cat> cats { get; set; }

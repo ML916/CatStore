@@ -11,19 +11,19 @@ using Xamarin.Forms.Xaml;
 
 namespace CatStore.Views
 {
+    /// <summary>
+    /// Klass för att visa kvitto hämtat från /api/id/orders
+    /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ReceiptPage : ContentPage
 	{
         private string id;
         public Receipt Receipt { get; set; }
-		public ReceiptPage ()
-		{
-			InitializeComponent ();
-		}
-
+		
         public ReceiptPage(string id)
         {
             this.id = id;
+            Title = "Kvitto " + id;
             InitializeComponent();
         }
 

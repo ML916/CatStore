@@ -17,6 +17,12 @@ namespace CatStore.Views
 			InitializeComponent ();
 		}
 
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Send(this, MessagesAndUrls.GetOrdersFromApiMessage);
+            base.OnAppearing();
+        }
+
         private async void OrderListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)

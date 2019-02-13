@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Http;
-//using System.Net.Http.Formatting;
 using System.Text;
 using Newtonsoft.Json;
 using CatStore;
 
 namespace CatStore.Models
 {
+    /// <summary>
+    /// Klass för hantering av "business logic" till butikssidan
+    /// </summary>
     public class StoreFront : INotifyPropertyChanged
     {
         public ObservableCollection<Cat> AvailableCats { get; set; }
@@ -18,6 +20,7 @@ namespace CatStore.Models
             AvailableCats = new ObservableCollection<Cat>();
         }
 
+        //Hämtning av Katter från api/cats
         public async void GetCatsFromAPI() {
             HttpClient httpClient = new HttpClient();
             var httpResponse = await httpClient.GetAsync(MessagesAndUrls.CatsURL);

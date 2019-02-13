@@ -11,32 +11,38 @@ using Xamarin.Forms.Xaml;
 
 namespace CatStore.Views
 {
+    /// <summary>
+    /// Denna klass är en sida för att visa detaljerad info om en katt
+    /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CatDetailPage : ContentPage
 	{
         CatDetailViewModel viewModel;
-
-        public CatDetailPage() {
-            InitializeComponent();
-
-            var cat = new Cat();
-
-            viewModel = new CatDetailViewModel(cat);
-            BindingContext = this.viewModel;
-        }
-
+        
 		public CatDetailPage (Cat cat)
 		{
 			InitializeComponent ();
             this.viewModel = new CatDetailViewModel(cat);
             BindingContext = this.viewModel;
-		}
 
-        private async void ToolbarAdd_Clicked(object sender, EventArgs e)
+            //Tar mot meddelanden ang. föremål som redan finns i varukorg
+            MessagingCenter.Subscribe<ShoppingCartViewModel, bool>(this, MessagesAndUrls.ItemAddedToCart, async (sender, isAdded) => {
+                if (isAdded)
+                {
+                    await DisplayAlert("Tillagd", "Katten finns nu i din varukorg", "Ok");
+                }
+                else
+                {
+                    await DisplayAlert("Finns redan i varukorg", "Du kan inte lägga till fler av detta föremål i varukorgen", "Ok");
+                }
+                await Navigation.PopAsync();
+            });
+		}
+       
+        //Event-hantering för klick på "Lägg till i varukorg", skickar meddelande i MessagingCenter för att lägga till i varukorg
+        private void ToolbarAdd_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, MessagesAndUrls.AddToCart, viewModel.Cat);
-            await DisplayAlert("Tillagd", "Katten finns nu i din varukorg", "Ok");
-            await Navigation.PopAsync();
         }
     }
 }

@@ -7,6 +7,9 @@ using CatStore.Views;
 
 namespace CatStore.ViewModels
 {
+    /// <summary>
+    /// ViewModel för data till CatDetailPage
+    /// </summary>
     public class CatDetailViewModel : BaseViewModel
     {
         public Cat Cat { get; set; }
@@ -14,10 +17,11 @@ namespace CatStore.ViewModels
             Title = cat.Name;
             Cat = cat;
 
-            MessagingCenter.Subscribe<CatDetailPage, Cat>(this, MessagesAndUrls.AddToCart, (obj, item) =>
+            //Tar mot meddelande från CatDetailPage
+            /*MessagingCenter.Subscribe<CatDetailPage, Cat>(this, MessagesAndUrls.AddToCart, (obj, item) =>
             {
                 var newCat = item as Cat;
-            });
+            });*/
         }
     }
 }

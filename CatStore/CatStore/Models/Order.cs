@@ -8,6 +8,9 @@ using System.Collections.ObjectModel;
 
 namespace CatStore.Models
 {
+    /// <summary>
+    /// Klass motsvarande enskilda Order-objekt så som dom lagras i API:t/servern
+    /// </summary>
     public class Order : INotifyPropertyChanged
     {
         private string id;
@@ -17,7 +20,7 @@ namespace CatStore.Models
             get => id;
             set {
                 id = value;
-                RaisePropertyChanged(Id);
+                RaisePropertyChanged("Id");
             }
         }
 
@@ -39,18 +42,40 @@ namespace CatStore.Models
         }
     }
 
+    /// <summary>
+    /// Klass motsvarande objekt som returneras vid POST mot api/orders
+    /// </summary>
     public class RootObjectResultOrder{
         private string orderId;
         public string OrderId { get => orderId; set => orderId = value; }
     }
 
-    public class RootObjectOrders
+    /// <summary>
+    /// Klass motsvarande orders-objekt hämtade från GET mot api/orders
+    /// </summary>
+    public class RootObjectOrders : INotifyPropertyChanged
     {
-        public ObservableCollection<Order> orders { get; set; }
+        private ObservableCollection<Order> orders;
+        public ObservableCollection<Order> Orders
+        {
+            get => orders;
+            set
+            {
+                orders = value;
+                RaisePropertyChanged("Orders");
+            }
+        }
         
         public RootObjectOrders()
         {
             orders = new ObservableCollection<Order>();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void RaisePropertyChanged(string property) {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
 
         public async void GetOrdersFromAPI()
@@ -59,6 +84,7 @@ namespace CatStore.Models
             var httpResponse = await httpClient.GetAsync(MessagesAndUrls.OrdersURL);
             var rootObject = await httpResponse.Content.ReadAsAsync<RootObjectOrders>();
             orders = rootObject.orders;
+            RaisePropertyChanged("Orders");
         }
     }
 }

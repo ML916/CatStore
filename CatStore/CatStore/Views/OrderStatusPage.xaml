@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:CatStore.ViewModels"
-             x:Class="CatStore.Views.OrderStatusPage">
+             x:Class="CatStore.Views.OrderStatusPage"
+             Title="{Binding Title}">
     <ContentPage.BindingContext>
         <viewModel:OrderStatusViewModel></viewModel:OrderStatusViewModel>
     </ContentPage.BindingContext>
@@ -10,10 +11,10 @@
         <StackLayout>
             <ListView x:Name="orderListView"
                       ItemSelected="OrderListView_ItemSelected"
-                      ItemsSource="{Binding RootObjectOrders.orders}">
+                      ItemsSource="{Binding RootObjectOrders.Orders}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Id}" Detail="{Binding Status}"/>
+                        <TextCell Text="{Binding Status}" Detail="{Binding Id}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

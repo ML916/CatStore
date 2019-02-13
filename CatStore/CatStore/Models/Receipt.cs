@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CatStore.Models
 {
+    /// <summary>
+    /// Klass motsvarande kvitto-objekt hämtade på api/orders/id/receipts
+    /// </summary>
     public class Receipt
     {
 

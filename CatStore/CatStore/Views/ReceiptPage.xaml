@@ -4,10 +4,9 @@
              x:Class="CatStore.Views.ReceiptPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Kvitto:" FontSize="Medium"/>
             <Label Text="{Binding sum, StringFormat='Summa: {0}'}"
                    FontSize="Medium"/>
-            <Label Text="{Binding status, StringFormat='Beställningsstatus: {0}'}"
+            <Label Text="{Binding status, StringFormat='Status: {0}'}"
                    FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>

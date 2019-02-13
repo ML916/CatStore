@@ -10,6 +10,9 @@ using CatStore.Services;
 
 namespace CatStore.ViewModels
 {
+    /// <summary>
+    /// Grundklass för ViewModels
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
         bool isBusy = false;

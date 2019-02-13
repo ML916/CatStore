@@ -4,11 +4,13 @@ using System.Text;
 
 namespace CatStore.Models
 {
+    /// <summary>
+    /// Klass för att hantera föremål i detaljmeny
+    /// </summary>
     public enum MenuItemType
     {
         StoreFront,
         ShoppingCart,
-        Receipt,
         OrderStatus
     }
     public class HomeMenuItem

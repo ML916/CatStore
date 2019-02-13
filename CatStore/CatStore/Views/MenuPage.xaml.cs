@@ -7,6 +7,9 @@ using Xamarin.Forms.Xaml;
 
 namespace CatStore.Views
 {
+    /// <summary>
+    /// Klass för hantering av detaljmenyn
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage
     {

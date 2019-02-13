@@ -7,6 +7,9 @@ using Xamarin.Forms.Xaml;
 
 namespace CatStore.Views
 {
+    /// <summary>
+    /// MainPage laddar in detaljmenyn och de sidor den innehåller
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : MasterDetailPage
     {
@@ -25,7 +28,6 @@ namespace CatStore.Views
             storeFrontPage = new StoreFrontPage();
             shoppingCartPage = new ShoppingCartPage();
             orderStatusPage = new OrderStatusPage();
-            //MenuPages.Add((int)MenuItemType.ShoppingCart, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
