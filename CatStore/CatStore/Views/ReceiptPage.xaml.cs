@@ -27,6 +27,7 @@ namespace CatStore.Views
             InitializeComponent();
         }
 
+        //Hämtar kvitto baserat på id
         private async Task SetupBindingContext(string id) {
             HttpClient httpClient = new HttpClient();
             string receiptURL = MessagesAndUrls.OrdersURL + id + "/receipt";

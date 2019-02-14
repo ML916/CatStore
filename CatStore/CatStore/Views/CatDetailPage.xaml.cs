@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace CatStore.Views
 {
     /// <summary>
-    /// Denna klass är en sida för att visa detaljerad info om en katt
+    /// Denna klass är bakomliggande kod för sida med detaljerad info om en katt
     /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CatDetailPage : ContentPage
